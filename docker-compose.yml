@@ -1,0 +1,20 @@
+version: '3.7'
+
+services:
+  server:
+    build:
+      context: ./
+    restart: always
+    environment:
+      POSTGRES_SERVER: db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: example
+      POSTGRES_DB: db
+    ports:
+      - '8000:8000'
+  db:
+    image: postgres:alpine
+    restart: always
+    environment:
+      POSTGRES_DB: db
+      POSTGRES_PASSWORD: example
