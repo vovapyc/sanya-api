@@ -2,6 +2,7 @@ import uvicorn
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
+from api.auth.routes import router as auth_router
 from api.books.routes import router as books_router
 from api.chapters.routes import router as chapters_router
 from db.init_db import init_db
@@ -20,6 +21,7 @@ app.add_middleware(
 
 app.include_router(books_router, prefix='/books')
 app.include_router(chapters_router, prefix='/books')
+app.include_router(auth_router, prefix='/auth')
 
 if __name__ == '__main__':
     db = SessionLocal()
