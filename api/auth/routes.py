@@ -8,6 +8,7 @@ from sqlalchemy.orm import Session
 from api import deps
 from .crud import *
 from .schemas import *
+from .schemas import UserSignup, UserLogin
 
 router = APIRouter()
 
