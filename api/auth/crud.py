@@ -27,6 +27,7 @@ def authenticate_user(db, username: str, password: str):
 
 
 def create_user(db, username, email, password):
+    password = get_password_hash(password)
     db_obj = User(username=username, email=email, hashed_password=password)  # type: ignore
     db.add(db_obj)
     db.commit()
