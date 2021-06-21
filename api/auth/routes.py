@@ -61,7 +61,7 @@ async def get_current_user(
 
 @router.post("/signin", response_model=Token)
 async def login_for_access_token(
-        user_in: UserLogin = Depends(),
+        user_in: UserLogin,
         db: Session = Depends(deps.get_db),
 ):
     user = authenticate_user(db, user_in.username, user_in.password)
@@ -80,7 +80,7 @@ async def login_for_access_token(
 
 @router.post("/signup", response_model=Token)
 async def sign_up(
-        user_in: UserSignup = Depends(),
+        user_in: UserSignup,
         db: Session = Depends(deps.get_db),
 ):
     user = create_user(db, user_in.username, user_in.email, user_in.password)
