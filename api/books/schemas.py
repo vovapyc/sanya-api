@@ -3,7 +3,7 @@ from pydantic import BaseModel
 
 class BaseBook(BaseModel):
     title: str
-    published: bool
+    published: bool = False
     description: str
     author: str
 
